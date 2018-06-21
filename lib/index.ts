@@ -88,7 +88,7 @@ console.log(parser.format('二十一'))
   /**
    * 整理标题中包含的序号 Sorting the serial number contained in the title
    * @param title 标题
-   * @example titleOrder()
+   * @example replace()
       ```js
       var parser = new iorder.Parser()
 console.log(parser.replace(null))

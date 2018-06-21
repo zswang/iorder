@@ -55,7 +55,7 @@ export class Parser {
   /**
    * 整理标题中包含的序号 Sorting the serial number contained in the title
    * @param title 标题
-   * @example titleOrder()
+   * @example replace()
       ```js
       (*<jdists import="?example-replace" />*)
       ```

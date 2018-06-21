@@ -54,7 +54,7 @@ examplejs_print(parser.format('二十一'))
 assert.equal(examplejs_printLines.join("\n"), "021"); examplejs_printLines = [];
   });
           
-  it("titleOrder()", function () {
+  it("replace()", function () {
     examplejs_printLines = [];
       var parser = new iorder.Parser()
 examplejs_print(parser.replace(null))
