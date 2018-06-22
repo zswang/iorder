@@ -55,16 +55,23 @@ console.log(parser.format('一千零十一'))
 // > 1011
 console.log(parser.format('一一三'))
 // > 0113
+console.log(parser.format('137'))
+// > 0137
 var parser = new iorder.Parser({ length: 3 })
 console.log(parser.format('十五'))
 // > 015
 console.log(parser.format('二十一'))
 // > 021
+console.log(parser.format('137'))
+// > 137
       ```
    */
   format(number: string): string {
     if (!number) {
       return number
+    }
+    if (/^\d+$/.test(number)) {
+      return `000000${number}`.slice(-this.options.length)
     }
     number = number.replace(/(^|零)十/g, '一十')
     let result = 0
@@ -105,6 +112,14 @@ console.log(parser.replace('第八期 设计语言和编程语言介绍（十）
 // > 第0008期 设计语言和编程语言介绍0010
 console.log(parser.replace('第八期 设计语言和编程语言介绍(十一)'))
 // > 第0008期 设计语言和编程语言介绍0011
+console.log(parser.replace('第1季 名侦探柯南(9)'))
+// > 第0001季 名侦探柯南0009
+console.log(parser.replace('第1季 名侦探柯南(10)'))
+// > 第0001季 名侦探柯南0010
+console.log(parser.replace('第1季 名侦探柯南 368'))
+// > 第0001季 名侦探柯南 0368
+console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
+// > 第0009期 设计语言和编程语言介绍0018
       ```
    */
   replace(title: string): string {
@@ -112,14 +127,17 @@ console.log(parser.replace('第八期 设计语言和编程语言介绍(十一)'
       return title
     }
     return title
+      .replace(/\b\d{1,3}\s*$/g, number => {
+        return this.format(number)
+      })
       .replace(
-        /(第?)([零一二三四五六七八九十百千]+)([期次章节段篇课])/g,
+        /(第?)([零一二三四五六七八九十百千\d]+)([期次章节段篇课季])/g,
         (all, prefix, number, unit) => {
           return `${prefix}${this.format(number)}${unit}`
         }
       )
       .replace(
-        /[（\(]([零一二三四五六七八九十百千]+)[）\)]/g,
+        /[（\(]([零一二三四五六七八九十百千\d]+)[）\)]/g,
         (all, number) => {
           return this.format(number)
         }

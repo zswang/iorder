@@ -50,11 +50,15 @@ export declare class Parser {
   // > 1011
   console.log(parser.format('一一三'))
   // > 0113
+  console.log(parser.format('137'))
+  // > 0137
   var parser = new iorder.Parser({ length: 3 })
   console.log(parser.format('十五'))
   // > 015
   console.log(parser.format('二十一'))
   // > 021
+  console.log(parser.format('137'))
+  // > 137
         ```
      */
     format(number: string): string;
@@ -78,6 +82,14 @@ export declare class Parser {
   // > 第0008期 设计语言和编程语言介绍0010
   console.log(parser.replace('第八期 设计语言和编程语言介绍(十一)'))
   // > 第0008期 设计语言和编程语言介绍0011
+  console.log(parser.replace('第1季 名侦探柯南(9)'))
+  // > 第0001季 名侦探柯南0009
+  console.log(parser.replace('第1季 名侦探柯南(10)'))
+  // > 第0001季 名侦探柯南0010
+  console.log(parser.replace('第1季 名侦探柯南 368'))
+  // > 第0001季 名侦探柯南 0368
+  console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
+  // > 第0009期 设计语言和编程语言介绍0018
         ```
      */
     replace(title: string): string;

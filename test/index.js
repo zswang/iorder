@@ -47,11 +47,15 @@ examplejs_print(parser.format('一千零十一'))
 assert.equal(examplejs_printLines.join("\n"), "1011"); examplejs_printLines = [];
 examplejs_print(parser.format('一一三'))
 assert.equal(examplejs_printLines.join("\n"), "0113"); examplejs_printLines = [];
+examplejs_print(parser.format('137'))
+assert.equal(examplejs_printLines.join("\n"), "0137"); examplejs_printLines = [];
 var parser = new iorder.Parser({ length: 3 })
 examplejs_print(parser.format('十五'))
 assert.equal(examplejs_printLines.join("\n"), "015"); examplejs_printLines = [];
 examplejs_print(parser.format('二十一'))
 assert.equal(examplejs_printLines.join("\n"), "021"); examplejs_printLines = [];
+examplejs_print(parser.format('137'))
+assert.equal(examplejs_printLines.join("\n"), "137"); examplejs_printLines = [];
   });
           
   it("replace()", function () {
@@ -71,6 +75,14 @@ examplejs_print(parser.replace('第八期 设计语言和编程语言介绍（�
 assert.equal(examplejs_printLines.join("\n"), "第0008期 设计语言和编程语言介绍0010"); examplejs_printLines = [];
 examplejs_print(parser.replace('第八期 设计语言和编程语言介绍(十一)'))
 assert.equal(examplejs_printLines.join("\n"), "第0008期 设计语言和编程语言介绍0011"); examplejs_printLines = [];
+examplejs_print(parser.replace('第1季 名侦探柯南(9)'))
+assert.equal(examplejs_printLines.join("\n"), "第0001季 名侦探柯南0009"); examplejs_printLines = [];
+examplejs_print(parser.replace('第1季 名侦探柯南(10)'))
+assert.equal(examplejs_printLines.join("\n"), "第0001季 名侦探柯南0010"); examplejs_printLines = [];
+examplejs_print(parser.replace('第1季 名侦探柯南 368'))
+assert.equal(examplejs_printLines.join("\n"), "第0001季 名侦探柯南 0368"); examplejs_printLines = [];
+examplejs_print(parser.replace('第9期 设计语言和编程语言介绍(18)'))
+assert.equal(examplejs_printLines.join("\n"), "第0009期 设计语言和编程语言介绍0018"); examplejs_printLines = [];
   });
           
 });
