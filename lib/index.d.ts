@@ -88,6 +88,8 @@ export declare class Parser {
   // > 第0001季 名侦探柯南0010
   console.log(parser.replace('第1季 名侦探柯南 368'))
   // > 第0001季 名侦探柯南 0368
+  console.log(parser.replace('课时 1 双曲率球面方程式'))
+  // > 课时0001双曲率球面方程式
   console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
   // > 第0009期 设计语言和编程语言介绍0018
         ```

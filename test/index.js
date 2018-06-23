@@ -81,6 +81,8 @@ examplejs_print(parser.replace('第1季 名侦探柯南(10)'))
 assert.equal(examplejs_printLines.join("\n"), "第0001季 名侦探柯南0010"); examplejs_printLines = [];
 examplejs_print(parser.replace('第1季 名侦探柯南 368'))
 assert.equal(examplejs_printLines.join("\n"), "第0001季 名侦探柯南 0368"); examplejs_printLines = [];
+examplejs_print(parser.replace('课时 1 双曲率球面方程式'))
+assert.equal(examplejs_printLines.join("\n"), "课时0001双曲率球面方程式"); examplejs_printLines = [];
 examplejs_print(parser.replace('第9期 设计语言和编程语言介绍(18)'))
 assert.equal(examplejs_printLines.join("\n"), "第0009期 设计语言和编程语言介绍0018"); examplejs_printLines = [];
   });

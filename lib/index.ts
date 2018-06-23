@@ -70,6 +70,7 @@ console.log(parser.format('137'))
     if (!number) {
       return number
     }
+    number = number.trim()
     if (/^\d+$/.test(number)) {
       return `000000${number}`.slice(-this.options.length)
     }
@@ -118,6 +119,8 @@ console.log(parser.replace('第1季 名侦探柯南(10)'))
 // > 第0001季 名侦探柯南0010
 console.log(parser.replace('第1季 名侦探柯南 368'))
 // > 第0001季 名侦探柯南 0368
+console.log(parser.replace('课时 1 双曲率球面方程式'))
+// > 课时0001双曲率球面方程式
 console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
 // > 第0009期 设计语言和编程语言介绍0018
       ```
@@ -131,13 +134,19 @@ console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
         return this.format(number)
       })
       .replace(
-        /(第?)([零一二三四五六七八九十百千\d]+)([期次章节段篇课季])/g,
+        /(第?)(\s*[零一二三四五六七八九十百千\d]+\s*)([期次章节段篇课季])/g,
         (all, prefix, number, unit) => {
           return `${prefix}${this.format(number)}${unit}`
         }
       )
       .replace(
-        /[（\(]([零一二三四五六七八九十百千\d]+)[）\)]/g,
+        /(课时)(\s*[零一二三四五六七八九十百千\d]+\s*)/g,
+        (all, prefix, number) => {
+          return `${prefix}${this.format(number)}`
+        }
+      )
+      .replace(
+        /[（\(](\s*[零一二三四五六七八九十百千\d]+\s*)[）\)]/g,
         (all, number) => {
           return this.format(number)
         }
