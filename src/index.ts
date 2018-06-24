@@ -73,7 +73,7 @@ export class Parser {
         return this.format(number)
       })
       .replace(
-        /(第?)(\s*[零一二三四五六七八九十百千\d]+\s*)([期次章节段篇课季])/g,
+        /(第?)(\s*[零一二三四五六七八九十百千\d]+\s*)([期次章节段篇课季]|单元)/g,
         (all, prefix, number, unit) => {
           return `${prefix}${this.format(number)}${unit}`
         }
