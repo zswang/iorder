@@ -85,6 +85,10 @@ examplejs_print(parser.replace('课时 1 双曲率球面方程式'))
 assert.equal(examplejs_printLines.join("\n"), "课时0001双曲率球面方程式"); examplejs_printLines = [];
 examplejs_print(parser.replace('第9期 设计语言和编程语言介绍(18)'))
 assert.equal(examplejs_printLines.join("\n"), "第0009期 设计语言和编程语言介绍0018"); examplejs_printLines = [];
+examplejs_print(parser.replace('一、Andorid 数据接入'))
+assert.equal(examplejs_printLines.join("\n"), "0001、Andorid 数据接入"); examplejs_printLines = [];
+examplejs_print(parser.replace('二： Andorid 数据接入'))
+assert.equal(examplejs_printLines.join("\n"), "0002：Andorid 数据接入"); examplejs_printLines = [];
   });
           
 });

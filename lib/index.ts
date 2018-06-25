@@ -123,6 +123,10 @@ console.log(parser.replace('课时 1 双曲率球面方程式'))
 // > 课时0001双曲率球面方程式
 console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
 // > 第0009期 设计语言和编程语言介绍0018
+console.log(parser.replace('一、Andorid 数据接入'))
+// > 0001、Andorid 数据接入
+console.log(parser.replace('二： Andorid 数据接入'))
+// > 0002：Andorid 数据接入
       ```
    */
   replace(title: string): string {
@@ -149,6 +153,12 @@ console.log(parser.replace('第9期 设计语言和编程语言介绍(18)'))
         /[（\(](\s*[零一二三四五六七八九十百千\d]+\s*)[）\)]/g,
         (all, number) => {
           return this.format(number)
+        }
+      )
+      .replace(
+        /(\s*[零一二三四五六七八九十百千\d]+\s*)([：、:])\s*/g,
+        (all, number, division) => {
+          return `${this.format(number)}${division}`
         }
       )
       .replace(/[（\(]([上中下]+)[）\)]/g, (all, number) => {
